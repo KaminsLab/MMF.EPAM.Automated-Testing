@@ -53,8 +53,12 @@ namespace Aircompany
         public PassengerPlane GetPassengerPlaneWithMaxPassengersCapacity()
         {
             IEnumerable<PassengerPlane> passengerPlanes = GetPassengersPlanes();
-            
-            return passengerPlanes.Aggregate((w, x) => w.PassengersCapacity > x.PassengersCapacity ? w : x);             
+
+            var enumerable = passengerPlanes.ToList();
+            PassengerPlane plane = !enumerable.Any() ? null
+                : enumerable.OrderByDescending(p => p.PassengersCapacity).FirstOrDefault();
+
+            return plane;
         }
 
         public IEnumerable<MilitaryPlane> GetTransportMilitaryPlanes()
