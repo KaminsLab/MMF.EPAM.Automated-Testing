@@ -13,7 +13,7 @@ namespace Aircompany.Planes
         
         public MilitaryType Type { get; }
 
-        public bool Equals(MilitaryPlane other) => base.Equals(other) && this.Type == other?.Type;
+        public bool Equals(MilitaryPlane other) => base.Equals(other) && this.Type == other!.Type;
 
         public override bool Equals(object obj) => obj is MilitaryPlane plane && this.Equals(plane);
 
