@@ -13,7 +13,9 @@ namespace BelarusRailway.Tests
         [SetUp]
         public void InitDriver()
         {
-            driver = new ChromeDriver();;
+            var option = new ChromeOptions();
+            option.AddArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");
+            driver = new ChromeDriver(option);;
         }
 
         [Test]
