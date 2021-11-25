@@ -10,8 +10,10 @@ namespace BelarusRailway.Tests.Pages
         {
         }
 
-        //#notification-popup>div>div>div.notification-modal__header>button
-        //#notification-popup>div>div>div.notification-modal__header > button
+        ////*[@id="filter-tab_2-1"]/form/div/div[3] - button
+        /// //*[@id="filter-tab_2-1"]/form/div/div[2]/div/div[1]/input[1]
+        /// //*[@id="filter-tab_2-1"]/form/div/div[3]/button
+        /// //*[@id="filter-tab_2-1"]/form/div/div[2]/div/div[1]/input[1]
 
         public IWebElement NotificationAccept => this.FindBy(By.XPath("//*[@id=\"notification-popup\"]/div/div/div[1]/button"));
 
@@ -19,9 +21,9 @@ namespace BelarusRailway.Tests.Pages
         
         public IWebElement ToPlaceInput => this.FindBy(By.Id("one-way-raspFormToTitle"));
 
-        public IWebElement Date => this.FindBy(By.XPath("html/body/div[1]/div[1]/div[1]/div/div/div/div[2]/main/div[1]/div[3]/div/div/div[1]/div[2]/div/div/div[2]/div/div/div[2]/div[1]/form/div/div[2]/div/div[1]/input[1]"));
+        public IWebElement Date => this.FindBy(By.XPath("//*[@id=\"filter-tab_2-1\"]/form/div/div[2]/div/div[1]/input[1]"));
 
-        public IWebElement FindButton => this.FindBy(By.XPath("html/body/div[1]/div[1]/div[1]/div/div/div/div[2]/main/div[1]/div[3]/div/div/div[1]/div[2]/div/div/div[2]/div/div/div[2]/div[1]/form/div/div[3]/button"));
+        public IWebElement FindButton => this.FindBy(By.XPath("//*[@id=\"filter-tab_2-1\"]/form/div/div[3]/button"));
 
         public HomePage AcceptNotification()
         {
