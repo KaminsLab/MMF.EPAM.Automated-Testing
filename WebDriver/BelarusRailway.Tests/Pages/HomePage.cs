@@ -42,7 +42,7 @@ namespace BelarusRailway.Tests.Pages
         public void SearchTrips() => this.FindButton.Click();
 
         private IWebElement FindBy(By key)
-            => new WebDriverWait(this.WebDriver, TimeSpan.FromSeconds(5))
+            => new WebDriverWait(this.WebDriver, TimeSpan.FromSeconds(10))
                 .Until(driver => driver.FindElement(key));
 
         public override HomePage OpenPage()
