@@ -14,9 +14,9 @@ namespace BelarusRailway.Tests
         [SetUp]
         public void InitDriver()
         {
-            var option = new ChromeOptions();
-            option.AddArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");
-            driver = new ChromeDriver(option);
+            //var option = new ChromeOptions();
+            //option.AddArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");
+            driver = new ChromeDriver(/*option*/);
         }
 
         [Test]
@@ -25,10 +25,10 @@ namespace BelarusRailway.Tests
             var homePage = new HomePage(driver)
                 .OpenPage();
 
-            homePage.AcceptNotification()
+            homePage
                 .EnterDeparturePlace("Minsk")
                 .EnterReachPlace("Hrodna")
-                .SelectDate("30 Nov. 2021")
+                .SelectDate("18 Dec. 2021")
                 .SearchTrips();
 
             var expectedPageUrl =
@@ -41,7 +41,7 @@ namespace BelarusRailway.Tests
         [TearDown]
         public void CloseDriver()
         {
-            driver.Close();
+            driver.Quit();
         }
     }
 }

@@ -9,12 +9,7 @@ namespace BelarusRailway.Tests.Pages
         public HomePage(IWebDriver webDriver) : base(webDriver, "https://pass.rw.by/en/?c=true")
         {
         }
-
-        ////*[@id="filter-tab_2-1"]/form/div/div[3] - button
-        /// //*[@id="filter-tab_2-1"]/form/div/div[2]/div/div[1]/input[1]
-        /// //*[@id="filter-tab_2-1"]/form/div/div[3]/button
-        /// //*[@id="filter-tab_2-1"]/form/div/div[2]/div/div[1]/input[1]
-
+        
         public IWebElement NotificationAccept => this.FindBy(By.XPath("//*[@id=\"notification-popup\"]/div/div/div[1]/button"));
 
         public IWebElement FromPlaceInput => this.FindBy(By.Id("one-way-raspFormFromTitle"));

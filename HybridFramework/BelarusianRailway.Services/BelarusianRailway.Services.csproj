@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <LangVersion>9</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\BelarusianRailway.Models\BelarusianRailway.Models.csproj" />
+      <ProjectReference Include="..\BelarusianRailway.PageObjects\BelarusianRailway.PageObjects.csproj" />
+      <ProjectReference Include="..\BelarusianRailway.WebDriver\BelarusianRailway.WebDriver.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Selenium.WebDriver" Version="4.1.0" />
+    </ItemGroup>
+
+</Project>
