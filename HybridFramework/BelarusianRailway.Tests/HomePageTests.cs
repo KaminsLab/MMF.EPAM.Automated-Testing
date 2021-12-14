@@ -9,19 +9,20 @@ namespace BelarusianRailway.Tests
     {
         private WebDriverManager manager;
             
-        [SetUp]
+        [OneTimeSetUp]
         public void Setup()
         {
             this.manager = new WebDriverManager();
         }
 
         [TestCaseSource(typeof(TestData), nameof(TestData.TestCasesForAvailableTrips))]
-        public void SearchTrips_Receive_Valid_TripDetails_Open_Page_With_Trips(TripDetails details, string expectedUrl)
+        public void SearchTrips_Receive_Valid_TripDetails_Open_Page_With_Trips(TripDetails details)
         {
-            Assert.AreEqual(expectedUrl, this.manager.PassTripDetails(details));
+            var url = this.manager.PassTripDetails(details);
+            Assert.IsTrue(this.manager.VerifyTripsPage(url, details));
         }
         
-        [TearDown]
+        [OneTimeTearDown]
         public void CloseDriver()
         {
             this.manager.DestroyDriver();

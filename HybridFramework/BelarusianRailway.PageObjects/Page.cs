@@ -1,4 +1,7 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using System.Collections.Generic;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
 
 namespace BelarusianRailway.PageObjects
@@ -24,5 +27,13 @@ namespace BelarusianRailway.PageObjects
 
             return this;
         }
+        
+        protected IWebElement FindBy(By key) => 
+            new WebDriverWait(this.WebDriver, TimeSpan.FromSeconds(5))
+                .Until(driver => driver.FindElement(key));
+        
+        protected IReadOnlyCollection<IWebElement> FindElementsBy(By key) => 
+            new WebDriverWait(this.WebDriver, TimeSpan.FromSeconds(5))
+                .Until(driver => driver.FindElements(key));
     }
 }

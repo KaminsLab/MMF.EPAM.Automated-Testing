@@ -12,8 +12,11 @@ namespace BelarusianRailway.Tests
             get
             {
                 yield return new TestCaseData(
-                    new TripDetails("Minsk", "Hrodna", new DateTime(2021, 12, 18)),
-                    "https://pass.rw.by/en/route/?from=Minsk&from_exp=&from_esr=&to=Hrodna&to_exp=&to_esr=&front_date=18+Dec.+2021&date=2021-12-18");
+                    new TripDetails("Minsk", "Hrodna", new DateTime(2021, 12, 18)));
+                yield return new TestCaseData(
+                    new TripDetails("Viciebsk", "Brest", new DateTime(2021, 12, 20)));
+                yield return new TestCaseData(
+                    new TripDetails("Maladziečna", "Hrodna", new DateTime(2021, 12, 25)));
             }
         }
     }

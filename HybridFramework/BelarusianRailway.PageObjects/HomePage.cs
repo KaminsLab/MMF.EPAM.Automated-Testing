@@ -12,13 +12,13 @@ namespace BelarusianRailway.PageObjects
         {
         }
         
-        public IWebElement FromPlaceInput => this.FindBy(By.Id("one-way-raspFormFromTitle"));
+        private IWebElement FromPlaceInput => this.FindBy(By.Id("one-way-raspFormFromTitle"));
         
-        public IWebElement ToPlaceInput => this.FindBy(By.Id("one-way-raspFormToTitle"));
+        private IWebElement ToPlaceInput => this.FindBy(By.Id("one-way-raspFormToTitle"));
 
-        public IWebElement Date => this.FindBy(By.XPath("//div[@id='filter-tab_2-1']//input[@placeholder='Choose date']"));
+        private IWebElement Date => this.FindBy(By.XPath("//div[@id='filter-tab_2-1']//input[@placeholder='Choose date']"));
         
-        public IWebElement FindButton => this.FindBy(By.XPath("//div[@id='filter-tab_2-1']//button[@type='submit'][normalize-space()='Find']"));
+        private IWebElement FindButton => this.FindBy(By.XPath("//div[@id='filter-tab_2-1']//button[@type='submit'][normalize-space()='Find']"));
 
         public HomePage EnterDeparturePlace(string place)
         {
@@ -58,15 +58,7 @@ namespace BelarusianRailway.PageObjects
             
             return days?.FirstOrDefault(d => d.Text == date.Day.ToString());
         }
-
-        private IWebElement FindBy(By key) => 
-            new WebDriverWait(this.WebDriver, TimeSpan.FromSeconds(5))
-                .Until(driver => driver.FindElement(key));
         
-        private IReadOnlyCollection<IWebElement> FindElementsBy(By key) => 
-            new WebDriverWait(this.WebDriver, TimeSpan.FromSeconds(5))
-                .Until(driver => driver.FindElements(key));
-
         public override HomePage OpenPage()
         {
             this.WebDriver.Navigate().GoToUrl(this.EntryUrl);
