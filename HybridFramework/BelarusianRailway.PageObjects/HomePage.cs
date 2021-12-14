@@ -46,14 +46,18 @@ namespace BelarusianRailway.PageObjects
 
         private IWebElement FindDay(DateTime date)
         {
-            var months = this.FindElementsBy(By.XPath(
-                "//div[@class='ui-datepicker-group ui-datepicker-group-first']"));
-            
+            var months = new IWebElement[]
+            {
+                this.FindBy(By.XPath("//div[@class='ui-datepicker-group ui-datepicker-group-first']")),
+                this.FindBy(By.XPath("//div[@class='ui-datepicker-group ui-datepicker-group-middle']")),
+                this.FindBy(By.XPath("//div[@class='ui-datepicker-group ui-datepicker-group-last']"))
+            };
+
             var month = months.FirstOrDefault(m 
                 => m.FindElement(By.ClassName("ui-datepicker-month")).Text == date.ToString("MMMM")
                    && m.FindElement(By.ClassName("ui-datepicker-year")).Text ==
                    date.Year.ToString());
-            
+
             var days = month?.FindElements(By.ClassName("ui-state-default"));
             
             return days?.FirstOrDefault(d => d.Text == date.Day.ToString());

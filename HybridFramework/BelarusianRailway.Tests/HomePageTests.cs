@@ -19,9 +19,24 @@ namespace BelarusianRailway.Tests
         public void SearchTrips_Receive_Valid_TripDetails_Open_Page_With_Trips(TripDetails details)
         {
             var url = this.manager.PassTripDetails(details);
-            Assert.IsTrue(this.manager.VerifyTripsPage(url, details));
+            Assert.IsTrue(this.manager.VerifyPageWithTrips(url, details));
         }
         
+        [TestCaseSource(typeof(TestData), nameof(TestData.TestCasesForNotAvailableTrips))]
+        public void SearchTrips_No_Communication_Between_Stations_Open_Page_Without_Trips(TripDetails details)
+        {
+            var url = this.manager.PassTripDetails(details);
+            Assert.IsTrue(this.manager.VerifyPageWithoutTrips(url));
+        }
+        
+        [TestCaseSource(typeof(TestData), nameof(TestData.TestCasesForUnknownPlace))]
+        public void SearchTrips_Receive_Unknown_Stations_Open_Page_Without_Trips(TripDetails details)
+        {
+            var url = this.manager.PassTripDetails(details);
+            Assert.IsTrue(this.manager.VerifyPageWithUnknownPlace(url));
+        }
+
+
         [OneTimeTearDown]
         public void CloseDriver()
         {
