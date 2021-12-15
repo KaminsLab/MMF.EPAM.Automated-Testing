@@ -8,9 +8,9 @@ namespace BelarusianRailway.WebDriver
     {
         private static Lazy<IWebDriver> driver = new(() =>
         {
-            //var options = new ChromeOptions();
-            //options.AddArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");
-            var chromeDriver = new ChromeDriver(/*options*/);
+            var options = new ChromeOptions();
+            options.AddArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");
+            var chromeDriver = new ChromeDriver(options);
 
             chromeDriver.Manage().Timeouts().ImplicitWait.Add(TimeSpan.FromSeconds(30));
             chromeDriver.Manage().Window.Maximize();
