@@ -9,6 +9,9 @@
     <PackageReference Include="DotNetSeleniumExtras.PageObjects" Version="3.11.0" />
     <PackageReference Include="DotNetSeleniumExtras.PageObjects.Core" Version="4.0.1" />
     <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />
+    <PackageReference Include="NLog.Extensions.Logging" Version="5.0.0-preview.3" />
   </ItemGroup>
 
 </Project>

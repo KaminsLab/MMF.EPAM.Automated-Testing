@@ -1,5 +1,7 @@
 using BelarusianRailway.Models;
 using BelarusianRailway.Services;
+using Microsoft.Extensions.Logging;
+using NLog.Extensions.Logging;
 using NUnit.Framework;
 
 namespace BelarusianRailway.Tests
@@ -8,11 +10,17 @@ namespace BelarusianRailway.Tests
     public class HomePageTests
     {
         private WebDriverManager manager;
-            
+        private ILogger<HomePageTests> logger;
+
         [OneTimeSetUp]
         public void Setup()
         {
-            this.manager = new WebDriverManager();
+            ILoggerFactory loggerFactory = LoggerFactory
+                .Create(builder => builder.AddNLog());
+
+            this.logger = loggerFactory.CreateLogger<HomePageTests>();
+
+            this.manager = new WebDriverManager(logger);
         }
 
         [TestCaseSource(typeof(TestData), nameof(TestData.TestCasesForAvailableTrips))]
@@ -35,7 +43,6 @@ namespace BelarusianRailway.Tests
             var url = this.manager.PassTripDetails(details);
             Assert.IsTrue(this.manager.VerifyPageWithUnknownPlace(url));
         }
-
 
         [OneTimeTearDown]
         public void CloseDriver()
