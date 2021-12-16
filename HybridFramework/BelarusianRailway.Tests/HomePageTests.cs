@@ -27,6 +27,7 @@ namespace BelarusianRailway.Tests
         public void SearchTrips_Receive_Valid_TripDetails_Open_Page_With_Trips(TripDetails details)
         {
             var url = this.manager.PassTripDetails(details);
+            this.logger.LogInformation($"Received url: {url}");
             Assert.IsTrue(this.manager.VerifyPageWithTrips(url, details));
         }
         
@@ -34,6 +35,7 @@ namespace BelarusianRailway.Tests
         public void SearchTrips_No_Communication_Between_Stations_Open_Page_Without_Trips(TripDetails details)
         {
             var url = this.manager.PassTripDetails(details);
+            this.logger.LogInformation($"Received url: {url}");
             Assert.IsTrue(this.manager.VerifyPageWithoutTrips(url));
         }
         
@@ -41,6 +43,7 @@ namespace BelarusianRailway.Tests
         public void SearchTrips_Receive_Unknown_Stations_Open_Page_Without_Trips(TripDetails details)
         {
             var url = this.manager.PassTripDetails(details);
+            logger.LogInformation($"Received url: {url}");
             Assert.IsTrue(this.manager.VerifyPageWithUnknownPlace(url));
         }
 
@@ -48,6 +51,7 @@ namespace BelarusianRailway.Tests
         public void CloseDriver()
         {
             this.manager.DestroyDriver();
+            this.logger.LogInformation($"Driver closed.");
         }
     }
 }
